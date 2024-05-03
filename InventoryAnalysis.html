@@ -70,7 +70,7 @@
           <li class="project__step">
             <h3 class="project__step-heading">Step 2: Calculate key inventory ratios and metrics</h3>
             <p class="project__step-description">
-              We will find key ratios and metrics to calculate based on our tables. For starters, we will find - inventory turnover, days sales in inventory, sale-through rate and the stock to sales
+              We will find key ratios and metrics to calculate based on our tables. For starters, we will find - inventory turnover, days sales in inventory, stock to sales, and inventory to sales
               ratio. Along the way, we will try to identify other metrics that might be beneficial to our analysis and business decision making.
             </p>
             <p class="project__step-description">
@@ -79,10 +79,54 @@
             <ul class="project__step-description">
               <li>Inventory turnover = COGS / average inventory</li>
               <li>Days sales in inventory = (average inventory / COGS) X number of days</li>
-              <li>Sale-through rate = (total sales / inventory on hand) X 100</li>
               <li>Stock to sales ratio = average inventory / net sales value</li>
+              <li>Inventory to sales ratio = ending inventory / sales</li>
             </ul>
-            <img src="./images/inventoryandpartsalesdatabaseinexcel.png" class="project__step-image" alt="Step 2 Screenshot" />
+            <p class="project__step-description">
+              First, using Power Query Editor, the part sales data file was transformed. Since we only care about 2024 sales, the sales were filtered for only items with a sale date in 2024. Once filtered,
+              the data was grouped by part ID to summarize total units sold by part ID. Now a new 2024 unit sales worksheet was generated and looks like this:
+            </p>
+            <img src="./images/groupedandfilteredpartsalesdatanew.png" class="project__step-image" alt="Step 2 Screenshot" />
+            <p class="project__step-description">
+              The 2024 unit sales data was then merged with our inventory data. Since our inventory data file contained unit cost and selling price, columns were added to calculate total 2024 COGS, sales,
+              and margins per part ID.
+            </p>
+            <img src="./images/inventorywithsalesdataadded.png" class="project__step-image" alt="Step 2 Screenshot" />
+            <p class="project__step-description">
+              One additional set of data we will need to complete our ratio analysis is the historical quantities on hand. We're assuming this is an analysis performed at year-end 2024, therefore, we will 
+              calculate average inventory using 12/31/2024 and 12/31/2023 inventory quantities. A 2023 inventory database was obtained and the 2023 QOH's were added to each part ID in our inventory database. 
+            </p>
+            <p class="project__step-description">
+              After adding the 2023 quantities, we are ready to begin our ratio calculations. Columns were added to show our ratios by part ID:
+            </p>
+            <img src="./images/ratioscalculated.png" class="project__step-image" alt="Step 2 Screenshot" />
+            <p class="project__step-description">
+              From this point, we can simply Pivot our table to obtain relevant information regarding our ratios. By part type:
+            </p>
+            <img src="./images/ratios by part type.png" class="project__step-image" alt="Step 2 Screenshot" />
+            <p class="project__step-description">
+              By part type, filtered for the Pineville location:
+            </p>
+            <img src="./images/by part type for pineville location.png" class="project__step-image" alt="Step 2 Screenshot" />
+            <p class="project__step-description">
+              By location, by part type:
+            </p>
+            <img src="./images/ratios by part all locations.png" class="project__step-image" alt="Step 2 Screenshot" />
+            <p class="project__step-description">
+              To take it a step further and identify other relevant information regarding the inventory data, let's find part IDs that are high turnover, high margin items. Below we can see part IDs 1489, 
+              1239, 1434, 3158 each have fantastic turnover and high margins (threshold set at minimum 250 turns). However, part IDs 2588, 3245, 1073 have high turnover, but less than 15% margins.
+            </p>
+            <img src="./images/high turnover high margin.png" class="project__step-image" alt="Step 2 Screenshot" />
+            <p class="project__step-description">
+              Let's look at the opposite - low turnover, low margin part IDs. Below we can see a number of part IDs that have slow turns and less than 15% margins. Maybe it's not even worth stocking these
+              parts anymore? We also see a number of part IDs that have slow turns but very positive margins (30%+). Maybe it would be prudent to lower the selling prices on these parts to approx. 20% 
+              margins to generate higher volume and turns? 
+            </p>
+            <img src="./images/low margin low to.png" class="project__step-image" alt="Step 2 Screenshot" />
+            <p class="project__step-description">
+              One thing that may be noticed in the inventory data is the exclusion of items still in inventory that have had zero sales activity in 2024. These values were filtered out for the analysis
+              and will be addressed in a subsequent step where we look at slow moving inventory subject to creating an allowance for in the accounting records.
+            </p>
             <!-- Example code snippet -->
             <!--<pre><code>// Your code snippet here</code></pre> -->
             <p>
