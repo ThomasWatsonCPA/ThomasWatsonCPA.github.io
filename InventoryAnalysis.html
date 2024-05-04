@@ -32,8 +32,8 @@
         </p>
         <p class="project__description">
           Data will need to be pulled from multiple files - one containing inventory data and one containing detailed part sales data. Our task is to group the inventory
-          data by category, calculate key inventory ratios/metrics, determine if there is aged inventory subject to recording an allowance, pinpoint which warehouses have the 
-          slowest moving inventory, and display this information in Tableau. 
+          data by category, calculate key inventory ratios/metrics, pinpoint which warehouses have the slowest moving inventory, determine if there is aged inventory 
+          subject to recording an allowance, and display this information in Tableau. 
         </p>
         <ul class="project__steps">
           <li class="project__step">
@@ -106,10 +106,6 @@
             </p>
             <img src="./images/ratios by part type.png" class="project__step-image" alt="Step 2 Screenshot" />
             <p class="project__step-description">
-              By part type, filtered for the Pineville location:
-            </p>
-            <img src="./images/by part type for pineville location.png" class="project__step-image" alt="Step 2 Screenshot" />
-            <p class="project__step-description">
               By location, by part type:
             </p>
             <img src="./images/ratios by part all locations.png" class="project__step-image" alt="Step 2 Screenshot" />
@@ -132,7 +128,40 @@
             <!--<pre><code>// Your code snippet here</code></pre> -->
             <p>
               
-            </p> 
+            </p>   
+          </li>
+          <!-- Repeat for other steps -->
+          <li class="project__step">
+            <h3 class="project__step-heading">Step 3: Pinpoint which warehouses have the slowest moving inventory</h3>
+            <p class="project__step-description">
+              Going back to our pivot table by location, by part, in the previous step, we can see a breakdown of turnover by location:
+            </p>
+            <img src="./images/slow moving inventory by location.png" class="project__step-image" alt="Step 1 Screenshot" />
+            <p class="project__step-description">
+              Further formatting and data can be added to the pivot to better show operational comparisons. The data indicates that Salty Flats and Bluffton have the slowest moving inventory, while White River
+              and Wheat City have the fastest moving inventory. Since the pivot table shows metrics by part type, additional comparisons can be seen. Comparing Salty Flats to White River, it appears Salty Flats 
+              sold way more harness units than White River during 2024. However, Bushings, Plates and Screws turned significanly greater than these types at Salty Flats, which drives White River as the location
+              with the fastest moving inventory.
+            </p>
+            <img src="./images/slow moving inventory by location.png" class="project__step-image" alt="Step 1 Screenshot" />
+            <!-- Example code snippet -->
+            <!--<pre><code>// Your code snippet here</code></pre> -->
+            <p>
+
+            </p>       
+          </li>
+          <!-- Repeat for other steps -->
+          <li class="project__step">
+            <h3 class="project__step-heading">Step 4: Identify inventory subject to an allowance</h3>
+            <p class="project__step-description">
+              For step 4, the data contained in the part sales data file will be revisited. 
+            </p>
+            <img src="./images/slow moving inventory by location.png" class="project__step-image" alt="Step 1 Screenshot" />
+            <!-- Example code snippet -->
+            <!--<pre><code>// Your code snippet here</code></pre> -->
+            <p>
+
+            </p>       
           </li>
         </ul>
       </div>
