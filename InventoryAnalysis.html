@@ -44,7 +44,8 @@
             </p>
             <img src="./images/inventoryandpartsalesdatabaseinexcel.png" class="project__step-image" alt="Step 0 Screenshot" />
             <p class="project__step-description">
-              Total cost and sales value attributable to each part ID were added as columns using the Power Query Editor:
+              Total cost and sales value attributable to each part ID were added as columns using the Power Query Editor. We will further combine and transform the data as 
+              we proceed through the steps:
             </p>
             <img src="./images/addingcolumnstodata.png" class="project__step-image" alt="Step 0 Screenshot" />
             <!-- Example code snippet -->
@@ -70,8 +71,8 @@
           <li class="project__step">
             <h3 class="project__step-heading">Step 2: Calculate key inventory ratios and metrics</h3>
             <p class="project__step-description">
-              We will find key ratios and metrics to calculate based on our tables. For starters, we will find - inventory turnover, days sales in inventory, stock to sales, and inventory to sales
-              ratio. Along the way, we will try to identify other metrics that might be beneficial to our analysis and business decision making.
+              To start, we will find - inventory turnover, days sales in inventory, stock to sales, and inventory to sales
+              ratio. Along the way, we will try to identify other metrics that might be beneficial to our analysis and decision making.
             </p>
             <p class="project__step-description">
               Here is a summary of our basic ratio calculations:
@@ -93,7 +94,7 @@
             </p>
             <img src="./images/inventorywithsalesdataadded.png" class="project__step-image" alt="Step 2 Screenshot" />
             <p class="project__step-description">
-              One additional set of data we will need to complete our ratio analysis is the historical quantities on hand. We're assuming this is an analysis performed at year-end 2024, therefore, we will 
+              One additional set of data needed to complete our ratio analysis is the historical quantities on hand. We're assuming this is an analysis performed at year-end 2024, therefore, we will 
               calculate average inventory using 12/31/2024 and 12/31/2023 inventory quantities. A 2023 inventory database was obtained and the 2023 QOH's were added to each part ID in our inventory database. 
             </p>
             <p class="project__step-description">
@@ -119,13 +120,13 @@
             <img src="./images/high turnover high margin.png" class="project__step-image" alt="Step 2 Screenshot" />
             <p class="project__step-description">
               Let's look at the opposite - low turnover, low margin part IDs. Below we can see a number of part IDs that have slow turns and less than 15% margins. Maybe it's not even worth stocking these
-              parts anymore? We also see a number of part IDs that have slow turns but very positive margins (30%+). Maybe it would be prudent to lower the selling prices on these parts to approx. 20% 
+              parts anymore? We also see a number of part IDs that have slow turns but very positive margins (30%+). Maybe it would be prudent to lower the selling prices on these parts to approx. 20-25% 
               margins to generate higher volume and turns? 
             </p>
             <img src="./images/low margin low to.png" class="project__step-image" alt="Step 2 Screenshot" />
             <p class="project__step-description">
-              One thing that may be noticed in the inventory data is the exclusion of items still in inventory that have had zero sales activity in 2024. These values were filtered out for the analysis
-              and will be addressed in a subsequent step where we look at slow moving inventory subject to creating an allowance for in the accounting records.
+              One thing to note regarding the inventory data is the exclusion of items still in inventory that had zero sales activity in 2024. These values were filtered out for the analysis
+              and will be addressed in a subsequent step where we look at slow moving inventory subject to creating an allowance in the accounting records.
             </p>
             <!-- Example code snippet -->
             <!--<pre><code>// Your code snippet here</code></pre> -->
