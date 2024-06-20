@@ -1,0 +1,153 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="./images/TWlogo.jpg" />
+
+  <!-- Put your site title here -->
+  <title>Union Contribution Automation</title>
+
+  <meta name="description" content="Description of Project 1" />
+  <!-- Add some coding keywords below, Ex: (React, CSS etc) -->
+  <meta name="keywords" content="Union Contribution Allocation Automation with Power Query" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+
+  <main role="main">
+
+    <!-- ***** Project 1 ***** -->
+
+    <section class="project" id="project-1">
+      <div class="row">
+        <h2 class="project__heading">Automation of union employee contribution allocation with Excel Power Query</h2>
+        <p class="project__description">
+          *Note - all confidential client data has been removed from this page. All names have been redacted and replaced with fictitious information*  
+        </p>
+        <p class="project__description">
+          For this project, I created an automation tool for calculating the contribution allocation for certain union employees. The allocation is based upon the Company's 
+          collective bargaining agreement, where certain employees belonging to "Union A" will receive a portion of a total contribution pool paid by the Company each quarter.  
+        </p>
+        <p class="project__description">
+          <li>The specifics of the employer's contribution allocation are as follows:</li>
+          <li>The "contribution pool" is 7% of all "Union A" employees gross compensation for the quarter</li>
+          <li>The pool of funds includes the wages of both active and terminated employees</li>
+          <li>The allocation for each employee is based on allocated years of service as a percentage of total allocated years of service for the group</li>
+          <li>The allocation years of service is based on the employee's years of service from hire date to allocation date (last day of quarter)</li>  
+          <li>If an employee in the group has worked 5 years or less, the employee receives 5 years of allocation service automatically</li>
+        </p>
+        
+        
+        <ul class="project__steps">
+          <li class="project__step">
+            <h3 class="project__step-heading">Step 1: Cleaning, Sorting, Validating data integrity</h3>
+            <p class="project__step-description">
+              The client typically provides us with a quarterly file that contains the data necessary to determine the allocation. This file contains names, status, classification,
+              wages, etc. However, it is often provided in various formats that might include capitalization and other structural differences. The first step involved was cleaning
+              this file into a usable, templatized format. Below is an example of what this file usually looks like (post-cleaned):   
+            </p>
+            <img src="./images/Union Wage Data.png" class="project__step-image" alt="Step 0 Screenshot" />
+            <!-- Example code snippet -->
+            <!--<pre><code>// Your code snippet here</code></pre> -->
+            <p>
+              
+            </p>
+            <p class="project__step-description">
+              The first order of business was to filter out any employees that are not participants in Union A. In addition, there are many blank term date cells since only a handful 
+              of employees terminated during the quarter. For these blank values, we will replace all blanks with a date in the infinite future (12/31/9999). While replacing the blank
+              term date values isn't really necessary, I like to do it anyways just for the sake of ease and future use. For example, we could add a simple validation operation to 
+              determine if the term date is before or after the allocation date since the employee must be actively employed on the allocation date. This could be beneficial if the 
+              data set grew larger or messier.  
+            </p>
+            <img src="./images/Union Sort Filter Class and Term.png" class="project__step-image" alt="Step 0 Screenshot" />
+            <!-- Example code snippet -->
+            <!--<pre><code>// Your code snippet here</code></pre> -->
+            <p>
+              
+            </p>
+            <p class="project__step-description">
+              To validate the data is accurate and complete, we can simply compare the number of Union A employees in our sorted data to the number of Union A employees in the original  
+              data file. There were 23 total Union A employees, of which, 4 were terminated. The data in the tool agrees to the original data; therefore, we can move to the next step.   
+            </p>
+            <p>
+              
+            </p> 
+          </li>
+
+
+          <!-- Repeat for other steps -->
+          <li class="project__step">
+            <h3 class="project__step-heading">Step 2: Calculate Allocated Years of Service</h3>
+            <p class="project__step-description">
+              The next step is to assign each employee with their years of service allocation. Basically what we achieve with this step is to calculate the number of years between the 
+              employee's hire date and the allocation date. The number of years has to be rounded DOWN to the nearest whole year. When the years of allocation service are calculated, 
+              a simple operation has to be performed to determine if that number is greater than or equal to 5 or not. If not, the allocated years of service for the employee must 
+              automatically be 5.  
+            </p>
+            <p class="project__step-description">
+              Here is the custom M Code function in Power Query to achieve this result:  
+            </p>
+            <pre><code>let
+              CalculateAllocationYears = (HireDate as date, AllocationDate as date) as number =>
+          
+              let 
+                  DifferenceInDays = Duration.Days(Duration.From(AllocationDate - HireDate)),
+                  DifferenceInYears = DifferenceInDays / 365,
+                  RoundedDifferenceInYears = Number.RoundDown(DifferenceInYears, 0),
+                  AllocatedYears = if RoundedDifferenceInYears <= 5 then 5 else RoundedDifferenceInYears
+              in 
+                  AllocatedYears
+          in
+              CalculateAllocationYears</code></pre>
+            <p>
+              
+            </p>
+            <p class="project__step-description">
+              And here is the calculation for each employee now shown in our table:  
+            </p>
+            <img src="./images/Allocation Calc in Table.png" class="project__step-image" alt="Step 0 Screenshot" />
+            <!-- Example code snippet -->
+            <!--<pre><code>// Your code snippet here</code></pre> -->
+            <p>
+
+            </p>       
+          </li>
+          
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ***** Footer ***** -->
+
+  <footer role="contentinfo" class="footer">
+    <div class="row">
+      <!-- Update the links to point to your accounts -->
+      <ul class="footer__social-links">
+        <li class="footer__social-link-item">
+          <a href="https://github.com/ThomasWatsonCPA/" title="Link to Github Profile">
+            <img src="./images/github.svg" class="footer__social-image" alt="Github">
+          </a>
+        </li>
+        <li class="footer__social-link-item">
+          <a href="https://www.linkedin.com/in/thomas-watson-b80847204">
+            <img src="./images/linkedin.svg" title="Link to Linkedin Profile" class="footer__social-image" alt="Linkedin">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <a href="#top" class="back-to-top" title="Back to Top">
+    <img src="./images/arrow-up.svg" alt="Back to Top" class="back-to-top__image"/>
+  </a>
+  <script src="./index.js"></script>
+</body>
+
+</html>
