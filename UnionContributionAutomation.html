@@ -40,6 +40,7 @@
           <li>The allocation for each employee is based on allocated years of service as a percentage of total allocated years of service for the group</li>
           <li>The allocation years of service is based on the employee's years of service from hire date to allocation date (last day of quarter)</li>  
           <li>If an employee in the group has worked 5 years or less, the employee receives 5 years of allocation service automatically</li>
+          <li>Terminated employees receive no contribution</li>
         </p>
         
         
@@ -126,7 +127,7 @@
               multiplying the contribution pool by the employee's pro-rata allocated years of service.    
             </p>
             <p class="project__step-description">
-              All of this can be performed in a fairly simple Power Query function:  
+              All of this can be performed in a fairly simple Power Query formula:  
             </p>
             <img src="./images/Union_Allocation/Employee Allocation Formula.png" class="project__step-image" alt="Formula for Employee Allocation" />
             <!-- Example code snippet -->
@@ -135,7 +136,7 @@
               
             </p>
             <p class="project__step-description">
-              The result is the addition of the Employee Allocation column which shows each employee's prorata share of the 7% of total gross wages (contribution) for the quarter:  
+              The result is the addition of the Employee Allocation column which shows each employee's prorata share of the contribution pool for the quarter:  
             </p>
             <img src="./images/Union_Allocation/Employee Allocation Calc in Table.png" class="project__step-image" alt="Employee allocation calc in table" />
             <!-- Example code snippet -->
